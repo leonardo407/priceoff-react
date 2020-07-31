@@ -1,0 +1,9 @@
+@import "../../main";
+
+.AddProduct {
+  &__mainWrapper {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

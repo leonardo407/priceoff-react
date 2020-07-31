@@ -1,14 +1,19 @@
 import React from 'react'
 import classes from './App.module.scss'
-import { Menu } from './components/Menu/Menu'
-import { Footer } from './components/Footer/Footer'
+import { Route, Switch } from 'react-router-dom'
+import { Layout } from './hoc/Layout/Layout'
+import { Main } from './pages/Main/Main'
+import { AddProduct } from './pages/AddProduct/AddProduct'
 
 function App() {
   return (
     <div className={classes.App}>
-      <Menu/>
-      <div className={classes.App__content}></div>
-      <Footer/>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Main}/>
+          <Route path="/addProduct" component={AddProduct}/>
+        </Switch>
+      </Layout>
     </div>
   )
 }

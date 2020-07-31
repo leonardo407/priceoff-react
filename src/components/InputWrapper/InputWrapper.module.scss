@@ -1,0 +1,32 @@
+@import "../../main";
+
+.InputWrapper {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    width: max-content;
+    font-size: 18px;
+    line-height: 17px;
+    color: $blue2;
+  }
+
+  &__labelRequired {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: -10px;
+      width: 8px;
+      height: 15px;
+      background-image: url('../../assets/images/status.svg');
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.InputWrapper + .InputWrapper {
+  margin-top: 20px;
+}

@@ -1,7 +1,10 @@
+@import "./main";
+
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: $milk;
 
   &__content {
     flex: 1 0 auto;
