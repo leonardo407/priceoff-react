@@ -5,8 +5,62 @@
   align-items: center;
   background-color: $white;
   height: 70px;
+  box-shadow: 0 4px 10px rgba(120, 142, 156, 0.5);
 
-  .logo {
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
+  &__emptyBlock {
+    width: 147px;
+  }
+
+  &__rightWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btnAdd {
+    width: 28px;
+    height: 28px;
+    margin-right: 43px;
+    background: $black50;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: inset 0 1px 3px rgba(0,10,20,0.5), 0 1px #535e68, 0 0 1px #56606a;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: $white;
+      width: 15px;
+      height: 3px;
+      top: 45%;
+      left: 24%;
+    }
+
+    &:after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__userWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__ava {
+    margin-left: 9px;
+    width: 33.33px;
+    height: 33.33px;
+    border-radius: 50%;
   }
 }

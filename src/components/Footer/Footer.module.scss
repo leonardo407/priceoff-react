@@ -1,0 +1,14 @@
+@import "../../main";
+
+.Footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 60px;
+  background-color: $milk2;
+
+  h3 {
+    color: $black;
+  }
+}
