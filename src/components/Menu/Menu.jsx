@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Menu.module.scss'
 import ava from '../../assets/images/Subtract.svg'
 
-export const Menu = () => (
+const Menu = () => (
   <header className={classes.Menu}>
     <div className='container'>
       <nav className={classes.Menu__nav}>
@@ -21,3 +21,5 @@ export const Menu = () => (
     </div>
   </header>
 )
+
+export default Menu

@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './InputWrapper.module.scss'
 
-export const InputWrapper = props => {
+const InputWrapper = props => {
 
   const labelClasses = [classes.InputWrapper__label]
 
@@ -18,3 +18,5 @@ export const InputWrapper = props => {
   )
 
 }
+
+export default InputWrapper

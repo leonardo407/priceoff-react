@@ -1,9 +1,17 @@
 @import "../../main";
 
 .AddProduct {
-  &__mainWrapper {
-    margin-top: 60px;
-    display: flex;
-    justify-content: space-between;
-  }
+
+}
+
+.mainWrapper {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 70px;
 }

@@ -1,0 +1,13 @@
+@import "../../../main";
+
+.Button {
+  background-color: $milk2;
+  padding: 9px 13px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+
+  &:active {
+    box-shadow: $btnActive;
+  }
+}

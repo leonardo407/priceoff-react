@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from '../../App.module.scss'
-import { Menu } from '../../components/Menu/Menu'
-import { Footer } from '../../components/Footer/Footer'
+import Menu from '../../components/Menu/Menu'
+import Footer from '../../components/Footer/Footer'
 
-export const Layout = props => (
+const Layout = props => (
   <>
     <Menu/>
     <div className={classes.App__content}>
@@ -12,3 +12,5 @@ export const Layout = props => (
     <Footer/>
   </>
 )
+
+export default Layout

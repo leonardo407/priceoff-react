@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './App.module.scss'
 import { Route, Switch } from 'react-router-dom'
-import { Layout } from './hoc/Layout/Layout'
-import { Main } from './pages/Main/Main'
-import { AddProduct } from './pages/AddProduct/AddProduct'
+import Layout from './hoc/Layout/Layout'
+import Main from './pages/Main/Main'
+import AddProduct from './pages/AddProduct/AddProduct'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/" exact component={Main}/>
-          <Route path="/addProduct" component={AddProduct}/>
+          <Route path="/add-product" component={AddProduct}/>
         </Switch>
       </Layout>
     </div>
