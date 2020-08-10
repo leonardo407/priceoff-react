@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer'
 const Layout = props => (
   <>
     <Menu/>
-    <div className={classes.App__content}>
+    <div className={classes.content}>
       {props.children}
     </div>
     <Footer/>

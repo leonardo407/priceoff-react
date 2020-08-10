@@ -1,13 +1,13 @@
 @import "../../../main";
 
-.Input {
+.Textarea {
   width: 300px;
-  height: 40px;
   background-color: $white;
   border: 3px solid $milk;
   border-radius: 10px;
   margin-top: 5px;
-  padding: 0 15px;
+  padding: 15px;
+  resize: none;
 
   &::placeholder {
     color: $blue50;

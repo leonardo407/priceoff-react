@@ -5,6 +5,9 @@ import CardProduct from '../../components/CardProduct/CardProduct'
 import InputWrapper from '../../components/InputWrapper/InputWrapper'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
+import Select from 'react-dropdown-select'
+import Textarea from '../../components/UI/Textarea/Textarea'
+import InputFile from '../../components/UI/InputFile/InputFile'
 
 const AddProduct = () => {
   let today = new Date()
@@ -13,8 +16,21 @@ const AddProduct = () => {
   const yyyy = today.getFullYear()
   today = mm + '/' + dd + '/' + yyyy
 
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ]
 
-  const [category, setCategory] = useState('Книга')
+  const selectStyle = {
+    marginTop: '10px',
+    border: '3px solid #DCD9D5',
+    borderRadius: '10px',
+    paddingLeft: '15px',
+    maxWidth: '300px'
+  }
+
+  const [category, setCategory] = useState([{ value: 'chocolate', label: 'Chocolate' }])
   const [title, setTitle] = useState('Пауло Коэльо')
   const [address, setAddress] = useState('г. Москва')
   const [description, setDescription] = useState('Отдам лучшие книги Пауло')
@@ -30,9 +46,11 @@ const AddProduct = () => {
             <div className={classes.leftWrapper}>
               {/* TODO: do it iteration*/}
               <InputWrapper label="Категория" required={true}>
-                <Input
-                  value={category}
-                  onChange={e => setCategory(e.target.value)}
+                <Select
+                  values={category}
+                  options={options}
+                  onChange={setCategory}
+                  style={selectStyle}
                 />
               </InputWrapper>
 
@@ -51,10 +69,14 @@ const AddProduct = () => {
               </InputWrapper>
 
               <InputWrapper label="Описание" required={true}>
-                <Input
+                <Textarea
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 />
+              </InputWrapper>
+
+              <InputWrapper label="Фотографии">
+                <InputFile/>
               </InputWrapper>
             </div>
 
@@ -62,11 +84,12 @@ const AddProduct = () => {
               <h3>Предпросмотр:</h3>
 
               <CardProduct
-                category={category}
+                category={category.length ? category[0].value : ''}
                 title={title}
                 address={address}
                 description={description}
                 date={date}
+                img={''}
               />
             </div>
           </div>

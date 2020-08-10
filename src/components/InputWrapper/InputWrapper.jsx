@@ -11,7 +11,9 @@ const InputWrapper = props => {
 
   return (
     <div className={classes.InputWrapper}>
-      <label htmlFor="" className={labelClasses.join(' ')}>{props.label}</label>
+      <label htmlFor="" className={labelClasses.join(' ')}>
+        {props.label}
+      </label>
 
       {props.children}
     </div>
