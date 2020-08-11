@@ -1,65 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './InputFile.module.scss'
+import icon from '../../../assets/images/mdiPublish.svg'
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => resolve(reader.result)
-  reader.onerror = error => reject(error)
-})
-
-const InputFile = () => {
-
-  const [files, setFiles] = useState([])
-  const [fileBase64, setFileBase64] = useState('')
-
-  async function onChange(e) {
-    const newFiles = e.target.files
-    const filesArr = Array.prototype.slice.call(newFiles)
-
-    setFiles(filesArr)
-
-    const firstFile = filesArr[0]
-    const base64FirstFile = await toBase64(firstFile)
-    setFileBase64(base64FirstFile)
-  }
-
-  async function removeFile(removeFile) {
-    const changedFiles = files.filter(file => file !== removeFile)
-
-    setFiles(changedFiles)
-
-    if (changedFiles.length) {
-      const firstFile = changedFiles[0]
-      const base64FirstFile = await toBase64(firstFile)
-      setFileBase64(base64FirstFile)
-    } else {
-      setFileBase64('')
-    }
-  }
+const InputFile = ({ files, onChangeFiles, removeFile }) => {
 
   return (
-    <>
+    <div className={classes.fileWrapper}>
       <label className={classes.customFileUpload}>
         <input
           type="file"
           className={classes.inputFile}
           multiple
-          onChange={e => onChange(e)}
+          onChange={e => onChangeFiles(e)}
         />
-        <i className="fa fa-cloud-upload"/> Attach
+        <img src={icon} alt=""/>
       </label>
 
-      {files.map((file, index) => (
-        <div
-          className={classes.filePreview}
-          onClick={() => removeFile(file)}
-          key={index}
-        >
-          {file.name}
-        </div>
-      ))}
-    </>
+      <div>
+        {files.map((file, index) => (
+          <div
+            className={classes.filePreview}
+            onClick={() => removeFile(file)}
+            key={index}
+          >
+            {file.name}
+          </div>
+        ))}
+      </div>
+
+    </div>
   )
 }
 

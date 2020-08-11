@@ -11,9 +11,15 @@
   overflow: hidden;
 }
 
-.img {
+.imgWrapper {
   max-width: 225px;
   max-height: 170px;
+  width: 100%;
+  height: 100%;
+  background-color: $milk;
+}
+
+.img {
   width: 100%;
   height: 100%;
 }

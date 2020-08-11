@@ -1,14 +1,31 @@
+@import "../../../main";
+
+.fileWrapper {
+  display: flex;
+  margin-top: 5px;
+}
+
 .inputFile {
   display: none;
 }
 
 .customFileUpload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid $milk;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 
 .filePreview {
-  margin: 0 10px;
+  margin-left: 10px;
+  color: $blue50;
+  cursor: pointer;
+}
+
+.filePreview + .filePreview {
+  margin-top: 5px;
 }

@@ -7,9 +7,12 @@ const CardProduct = ({ category, title, address, description, date, img }) => {
 
   return (
     <div className={classes.CardProduct}>
-      <img className={classes.img}
-           src={img}
-           alt=""/>
+      <div className={classes.imgWrapper}>
+        <img className={classes.img}
+             src={img}
+             alt=""/>
+      </div>
+
 
       <div className={classes.body}>
         <p className={classes.category}>{category}</p>
