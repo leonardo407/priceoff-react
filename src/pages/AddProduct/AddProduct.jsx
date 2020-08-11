@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './AddProduct.module.scss'
+import prettyDate from '../../utils/prettyDate'
 import PageWrapper from '../../hoc/PageWrapper/PageWrapper'
 import CardProduct from '../../components/CardProduct/CardProduct'
 import InputWrapper from '../../components/InputWrapper/InputWrapper'
@@ -10,8 +11,6 @@ import Textarea from '../../components/UI/Textarea/Textarea'
 import InputFile from '../../components/UI/InputFile/InputFile'
 
 const toBase64 = file => new Promise((resolve, reject) => {
-  if (!file) return
-
   const reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = () => resolve(reader.result)
@@ -19,11 +18,6 @@ const toBase64 = file => new Promise((resolve, reject) => {
 })
 
 const AddProduct = () => {
-  let today = new Date()
-  const dd = String(today.getDate()).padStart(2, '0')
-  const mm = String(today.getMonth() + 1).padStart(2, '0')
-  const yyyy = today.getFullYear()
-  today = mm + '/' + dd + '/' + yyyy
 
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -43,39 +37,36 @@ const AddProduct = () => {
   const [title, setTitle] = useState('Пауло Коэльо')
   const [address, setAddress] = useState('г. Москва')
   const [description, setDescription] = useState('Отдам лучшие книги Пауло')
-  const [date] = useState(today)
+  const [date] = useState(prettyDate)
   const [files, setFiles] = useState([])
-  const [fileBase64, setFileBase64] = useState('https://bigpicture.ru/wp-content/uploads/2019/12/1080x1080_0xac120003_8752498641576689710-800x420.jpg')
+  const [fileBase64, setFileBase64] = useState('')
 
-  async function onChangeFiles(e) {
+  useEffect(() => {
+    async function watcherFiles() {
+      if (files.length) {
+        const firstFile = files[0]
+        const base64FirstFile = await toBase64(firstFile)
+
+        setFileBase64(base64FirstFile)
+      } else {
+        setFileBase64('')
+      }
+    }
+
+    watcherFiles()
+  })
+
+  function onChangeFiles(e) {
     const newFiles = e.target.files
     const filesArr = Array.from(newFiles)
 
     setFiles(filesArr)
-
-    {/* TODO: do single watcher*/
-    }
-    const firstFile = filesArr[0]
-    const base64FirstFile = await toBase64(firstFile)
-
-    setFileBase64(base64FirstFile)
   }
 
-  async function removeFile(removeFile) {
+  function removeFile(removeFile) {
     const changedFiles = files.filter(file => file !== removeFile)
 
     setFiles(changedFiles)
-
-    {/* TODO: do single watcher*/
-    }
-    if (changedFiles.length) {
-      const firstFile = changedFiles[0]
-      const base64FirstFile = await toBase64(firstFile)
-
-      setFileBase64(base64FirstFile)
-    } else {
-      setFileBase64('')
-    }
   }
 
   return (
@@ -86,7 +77,7 @@ const AddProduct = () => {
 
           <div className={classes.mainWrapper}>
             <div className={classes.leftWrapper}>
-              {/* TODO: do it iteration*/}
+
               <InputWrapper label="Категория" required={true}>
                 <Select
                   values={category}
