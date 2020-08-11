@@ -24,10 +24,18 @@ const InputFile = () => {
     setFileBase64(base64FirstFile)
   }
 
-  function removeFile(removeFile) {
+  async function removeFile(removeFile) {
     const changedFiles = files.filter(file => file !== removeFile)
 
     setFiles(changedFiles)
+
+    if (changedFiles.length) {
+      const firstFile = changedFiles[0]
+      const base64FirstFile = await toBase64(firstFile)
+      setFileBase64(base64FirstFile)
+    } else {
+      setFileBase64('')
+    }
   }
 
   return (
@@ -51,8 +59,6 @@ const InputFile = () => {
           {file.name}
         </div>
       ))}
-
-      <img src={fileBase64} alt=""/>
     </>
   )
 }

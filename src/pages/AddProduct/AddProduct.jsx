@@ -95,7 +95,9 @@ const AddProduct = () => {
           </div>
 
           <div className={classes.btnWrapper}>
-            <Button><h3>Добавить</h3></Button>
+            <Button>
+              <h3>Добавить</h3>
+            </Button>
           </div>
 
         </PageWrapper>
