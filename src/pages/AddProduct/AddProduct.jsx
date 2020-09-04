@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import classes from './AddProduct.module.scss'
+import axios from 'axios'
+import Select from 'react-dropdown-select'
 import prettyDate from '../../utils/prettyDate'
 import PageWrapper from '../../hoc/PageWrapper/PageWrapper'
 import CardProduct from '../../components/CardProduct/CardProduct'
 import InputWrapper from '../../components/InputWrapper/InputWrapper'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
-import Select from 'react-dropdown-select'
 import Textarea from '../../components/UI/Textarea/Textarea'
-import InputFile from '../../components/UI/InputFile/InputFile'
+import InputFile from '../../components/InputFile/InputFile'
 
 const toBase64 = file => new Promise((resolve, reject) => {
   const reader = new FileReader()
@@ -19,21 +20,8 @@ const toBase64 = file => new Promise((resolve, reject) => {
 
 const AddProduct = () => {
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ]
-
-  const selectStyle = {
-    marginTop: '10px',
-    border: '3px solid #DCD9D5',
-    borderRadius: '10px',
-    paddingLeft: '15px',
-    maxWidth: '300px',
-  }
-
-  const [category, setCategory] = useState([{ value: 'chocolate', label: 'Chocolate' }])
+  const [category, setCategory] = useState([])
+  const [categories, setCategories] = useState([])
   const [title, setTitle] = useState('Пауло Коэльо')
   const [address, setAddress] = useState('г. Москва')
   const [description, setDescription] = useState('Отдам лучшие книги Пауло')
@@ -55,6 +43,24 @@ const AddProduct = () => {
 
     watcherFiles()
   })
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/get-categories/', {
+      withCredentials: true,
+    })
+      .then(response => {
+        setCategory([response.data[0]])
+        setCategories(response.data)
+      })
+  }, [])
+
+  const selectStyle = {
+    marginTop: '10px',
+    border: '3px solid #DCD9D5',
+    borderRadius: '10px',
+    paddingLeft: '15px',
+    maxWidth: '300px',
+  }
 
   function onChangeFiles(e) {
     const newFiles = e.target.files
@@ -81,7 +87,8 @@ const AddProduct = () => {
               <InputWrapper label="Категория" required={true}>
                 <Select
                   values={category}
-                  options={options}
+                  labelField={'title'}
+                  options={categories}
                   onChange={setCategory}
                   style={selectStyle}
                 />
@@ -121,7 +128,7 @@ const AddProduct = () => {
               <h3>Предпросмотр:</h3>
 
               <CardProduct
-                category={category.length ? category[0].value : ''}
+                category={category.length ? category[0].title : ''}
                 title={title}
                 address={address}
                 description={description}

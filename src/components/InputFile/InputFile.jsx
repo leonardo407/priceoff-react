@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './InputFile.module.scss'
-import icon from '../../../assets/images/mdiPublish.svg'
+import icon from '../../assets/images/mdiPublish.svg'
 
 const InputFile = ({ files, onChangeFiles, removeFile }) => {
 
