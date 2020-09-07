@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Input.module.scss'
 
-const Input = ({type, value, onChange}) => {
+const Input = ({ type, value, onChange, id }) => {
 
   const inputType = type || 'text'
 
@@ -11,6 +11,7 @@ const Input = ({type, value, onChange}) => {
       className={classes.Input}
       value={value}
       onChange={onChange}
+      id={id}
     />
   )
 }

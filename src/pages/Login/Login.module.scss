@@ -1,0 +1,21 @@
+@import "../../main";
+
+.Form {
+  max-width: 440px;
+  width: 100%;
+  margin: 60px auto 0 auto;
+  padding: 65px 70px;
+  background-color: $white;
+  border-radius: 20px;
+}
+
+.Title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.ButtonWrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}

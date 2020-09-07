@@ -94,24 +94,27 @@ const AddProduct = () => {
                 />
               </InputWrapper>
 
-              <InputWrapper label="Название" required={true}>
+              <InputWrapper label="Название" required={true} id={1}>
                 <Input
                   value={title}
                   onChange={e => setTitle(e.target.value)}
+                  id={1}
                 />
               </InputWrapper>
 
-              <InputWrapper label="Адрес" required={true}>
+              <InputWrapper label="Адрес" required={true} id={2}>
                 <Input
                   value={address}
                   onChange={e => setAddress(e.target.value)}
+                  id={2}
                 />
               </InputWrapper>
 
-              <InputWrapper label="Описание" required={true}>
+              <InputWrapper label="Описание" required={true} id={3}>
                 <Textarea
                   value={description}
                   onChange={e => setDescription(e.target.value)}
+                  id={3}
                 />
               </InputWrapper>
 

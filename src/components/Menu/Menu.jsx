@@ -5,18 +5,23 @@ import ava from '../../assets/images/Subtract.svg'
 const Menu = () => (
   <header className={classes.Menu}>
     <div className='container'>
-      <nav className={classes.Menu__nav}>
-        <div className={classes.Menu__emptyBlock}></div>
-        <h2>ЦенOff</h2>
-        <div className={classes.Menu__rightWrapper}>
-          <button className={classes.Menu__btnAdd}></button>
+      <nav className={classes.Nav}>
+        <div className={classes.EmptyBlock}>
+        </div>
 
-          <div className={classes.Menu__userWrapper}>
+        <h2>ЦенOff</h2>
+
+        <div className={classes.RightWrapper}>
+          <button className={classes.BtnAdd}>
+          </button>
+
+          <div className={classes.UserWrapper}>
             <h3>Ray</h3>
 
-            <img src={ava} alt="" className={classes.Menu__ava}/>
+            <img src={ava} alt="" className={classes.Ava}/>
           </div>
         </div>
+
       </nav>
     </div>
   </header>

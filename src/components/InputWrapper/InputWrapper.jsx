@@ -1,21 +1,21 @@
 import React from 'react'
 import classes from './InputWrapper.module.scss'
 
-const InputWrapper = props => {
+const InputWrapper = ({ label, children, required, id }) => {
 
-  const labelClasses = [classes.InputWrapper__label]
+  const labelClasses = [classes.Label]
 
-  if (props.required) {
-    labelClasses.push(classes.InputWrapper__labelRequired)
+  if (required) {
+    labelClasses.push(classes.LabelRequired)
   }
 
   return (
     <div className={classes.InputWrapper}>
-      <label htmlFor="" className={labelClasses.join(' ')}>
-        {props.label}
+      <label htmlFor={id} className={labelClasses.join(' ')}>
+        {label}
       </label>
 
-      {props.children}
+      {children}
     </div>
   )
 
