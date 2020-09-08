@@ -45,7 +45,7 @@ const AddProduct = () => {
   })
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/get-categories/', {
+    axios.get('http://localhost:3000/api/categories/', {
       withCredentials: true,
     })
       .then(response => {
@@ -76,13 +76,27 @@ const AddProduct = () => {
   }
 
   return (
-    <main className={classes.AddProduct}>
+    <main>
       <div className='container'>
         <PageWrapper>
           <h3>Добавить товар</h3>
 
           <div className={classes.mainWrapper}>
             <div className={classes.leftWrapper}>
+              
+              <h3>Предпросмотр:</h3>
+
+              <CardProduct
+                category={category.length ? category[0].title : ''}
+                title={title}
+                address={address}
+                description={description}
+                date={date}
+                img={fileBase64}
+              />
+            </div>
+
+            <div className={classes.rightWrapper}>
 
               <InputWrapper label="Категория" required={true}>
                 <Select
@@ -125,19 +139,6 @@ const AddProduct = () => {
                   removeFile={removeFile}
                 />
               </InputWrapper>
-            </div>
-
-            <div className={classes.rightWrapper}>
-              <h3>Предпросмотр:</h3>
-
-              <CardProduct
-                category={category.length ? category[0].title : ''}
-                title={title}
-                address={address}
-                description={description}
-                date={date}
-                img={fileBase64}
-              />
             </div>
           </div>
 

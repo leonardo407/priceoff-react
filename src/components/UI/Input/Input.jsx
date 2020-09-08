@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Input.module.scss'
 
-const Input = ({ type, value, onChange, id }) => {
+const Input = ({ type, value, onChange, id, placeholder }) => {
 
   const inputType = type || 'text'
 
@@ -12,6 +12,7 @@ const Input = ({ type, value, onChange, id }) => {
       value={value}
       onChange={onChange}
       id={id}
+      placeholder={placeholder}
     />
   )
 }

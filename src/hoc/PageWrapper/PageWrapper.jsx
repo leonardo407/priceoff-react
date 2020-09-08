@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './PageWrapper.module.scss'
 
-const PageWrapper = props => (
+const PageWrapper = ({ children }) => (
   <div className={classes.PageWrapper}>
-    {props.children}
+    {children}
   </div>
 )
 

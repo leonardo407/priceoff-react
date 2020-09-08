@@ -6,6 +6,7 @@ const Menu = () => (
   <header className={classes.Menu}>
     <div className='container'>
       <nav className={classes.Nav}>
+        
         <div className={classes.EmptyBlock}>
         </div>
 
