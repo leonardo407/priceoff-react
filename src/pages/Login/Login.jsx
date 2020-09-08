@@ -31,7 +31,7 @@ const Login = () => {
 
       <div className={classes.ButtonWrapper}>
         <Button>
-          Отправить
+         <h3>Отправить</h3>
         </Button>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import classes from './AddProduct.module.scss'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-dropdown-select'
+import { fetchCategories } from '../../store/actions'
+import toBase64 from '../../utils/toBase64'
 import prettyDate from '../../utils/prettyDate'
 import PageWrapper from '../../hoc/PageWrapper/PageWrapper'
 import CardProduct from '../../components/CardProduct/CardProduct'
@@ -11,17 +13,12 @@ import Button from '../../components/UI/Button/Button'
 import Textarea from '../../components/UI/Textarea/Textarea'
 import InputFile from '../../components/InputFile/InputFile'
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => resolve(reader.result)
-  reader.onerror = error => reject(error)
-})
-
 const AddProduct = () => {
 
+  const dispatch = useDispatch()
+  const categories = useSelector(state => state.categories)
+
   const [category, setCategory] = useState([])
-  const [categories, setCategories] = useState([])
   const [title, setTitle] = useState('Пауло Коэльо')
   const [address, setAddress] = useState('г. Москва')
   const [description, setDescription] = useState('Отдам лучшие книги Пауло')
@@ -45,14 +42,8 @@ const AddProduct = () => {
   })
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/categories/', {
-      withCredentials: true,
-    })
-      .then(response => {
-        setCategory([response.data[0]])
-        setCategories(response.data)
-      })
-  }, [])
+    dispatch(fetchCategories())
+  }, [dispatch])
 
   const selectStyle = {
     marginTop: '10px',
@@ -83,7 +74,7 @@ const AddProduct = () => {
 
           <div className={classes.mainWrapper}>
             <div className={classes.leftWrapper}>
-              
+
               <h3>Предпросмотр:</h3>
 
               <CardProduct
@@ -105,6 +96,8 @@ const AddProduct = () => {
                   options={categories}
                   onChange={setCategory}
                   style={selectStyle}
+                  searchable={false}
+                  placeholder={'Выберите'}
                 />
               </InputWrapper>
 

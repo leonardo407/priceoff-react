@@ -1,9 +1,11 @@
+import { FETCH_CATEGORIES } from './types'
+
 const initialState = {
   categories: [],
 }
 
 const handlers = {
-
+  [FETCH_CATEGORIES]: (state, { payload }) => ({ ...state, categories: payload }),
   DEFAULT: state => state,
 }
 
