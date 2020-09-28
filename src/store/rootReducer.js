@@ -1,10 +1,12 @@
-import { FETCH_CATEGORIES } from './types'
+import { FETCH_CATEGORIES, LOGIN } from './types'
 
 const initialState = {
+  user: {},
   categories: [],
 }
 
 const handlers = {
+  [LOGIN]: (state, { payload }) => ({ ...state, user: payload }),
   [FETCH_CATEGORIES]: (state, { payload }) => ({ ...state, categories: payload }),
   DEFAULT: state => state,
 }
